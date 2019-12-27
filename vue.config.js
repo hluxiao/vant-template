@@ -4,14 +4,15 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         port: 8080, // 端口号
-        host: 'localhost',
         https: false, // https:{type:Boolean}
-        open: false, //配置自动启动浏览器
         proxy: {
-            '/api': {
-                target: '<url>',
-                ws: true,
-                changeOrigin: true
+            '/api': {    
+                target: 'http://127.0.0.1:7300/mock/5df83c4e36786b49606baff6/example',  // 接口域名
+                // secure: false,  // 如果是https接口，需要配置这个参数
+                changeOrigin: true,  //是否跨域
+                pathRewrite: {
+                    '^/api': ''   //需要rewrite的,
+                }              
             }
         }
     }

@@ -9,8 +9,12 @@ import Vconsole from 'vconsole'
 let vConsole = new Vconsole()
 Vue.use(vConsole)
 //引入vant组件
-import { Button } from 'vant';
+import { 
+  Button,
+  Toast
+ } from 'vant';
 Vue.use(Button);
+Vue.use(Toast);
 
 Vue.config.productionTip = false
 new Vue({

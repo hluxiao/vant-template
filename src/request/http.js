@@ -1,7 +1,9 @@
+import Vue from 'vue';
 import axios from 'axios'
 import QS from 'qs'; // 引入qs模块，用来序列化post类型的数据，后面会提到
+import { Toast  } from 'vant';
+Vue.use(Toast );
 
-// axios.defaults.baseURL = process.env.SERV_API;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // 请求拦截器
 axios.interceptors.request.use(    
@@ -15,7 +17,7 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(    
     response => {   
-        if (response.status === 200) {   
+        if (response.status === 200) {  
             return Promise.resolve(response);        
         } else {            
             return Promise.reject(response);        
@@ -25,6 +27,15 @@ axios.interceptors.response.use(
     error => {            
         if (error.response.status) {            
             //定义错误码
+            swich(error.response.status){
+                case 500:
+                    Toast("服务器错误");
+                    break;
+                
+            }
+            // if(error.response.status == 500){
+            //     Toast("服务器错误")
+            // }
             return Promise.reject(error.response);
         }
     }    
