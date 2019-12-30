@@ -27,12 +27,6 @@ axios.interceptors.response.use(
     error => {            
         if (error.response.status) {            
             //定义错误码
-            swich(error.response.status){
-                case 500:
-                    Toast("服务器错误");
-                    break;
-                
-            }
             // if(error.response.status == 500){
             //     Toast("服务器错误")
             // }

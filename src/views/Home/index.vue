@@ -42,8 +42,8 @@ export default {
     }
   },
   mounted(){
-    this.testGetApi()
-    this.testPostApi()
+    // this.testGetApi()
+    // this.testPostApi()
   }
 }
 </script>
